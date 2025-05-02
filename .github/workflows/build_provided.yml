@@ -1,0 +1,30 @@
+name: 'Build Provided'
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: 'Build'
+    runs-on: ubuntu-22.04-arm
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Build'
+        uses: explore-flights/libduckdb/.github/actions/build_go_provided@main
+        with:
+          go_arch: 'arm64'
+          go_build_output_file: 'example'
+          go_version: '1.24.2'
+          image_arch: 'aarch64'
+          platform: 'linux/arm64'
+          file: 'libduckdb_bundle-arm64-linux.a'
+      - name: 'Run App'
+        run: ./example >> extensions.txt
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v4
+        with:
+          name: 'extensions.txt'
+          path: 'extensions.txt'

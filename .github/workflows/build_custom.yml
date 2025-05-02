@@ -1,0 +1,32 @@
+name: 'Build Custom'
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: 'Build'
+    runs-on: ubuntu-22.04-arm
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Build'
+        uses: explore-flights/libduckdb/.github/actions/build_go_custom@main
+        with:
+          duckdb_git_ref: 'v1.2.2'
+          extension_config_path: 'extension_config.cmake'
+          go_arch: 'arm64'
+          go_build_output_file: 'example'
+          go_version: '1.24.2'
+          image_arch: 'aarch64'
+          platform: 'linux/arm64'
+          vcpkg_target_triplet: 'arm64-linux'
+      - name: 'Run App'
+        run: ./example >> extensions.txt
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v4
+        with:
+          name: 'extensions.txt'
+          path: 'extensions.txt'
