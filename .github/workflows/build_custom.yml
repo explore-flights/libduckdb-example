@@ -15,12 +15,12 @@ jobs:
       - name: 'Setup go'
         uses: actions/setup-go@v5
         with:
-          go-version-file: 'go.mod'
+          go-version: '1.24.2'
           cache-dependency-path: 'go.sum'
       - name: 'Build'
         uses: explore-flights/libduckdb/.github/actions/build_go_custom@main
         with:
-          duckdb_git_ref: 'v1.2.2'
+          duckdb_git_ref: 'v1.3.0'
           extension_config_path: 'extension_config.cmake'
           go_arch: 'arm64'
           go_build_output_file: 'example'

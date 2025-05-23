@@ -15,7 +15,7 @@ jobs:
       - name: 'Setup go'
         uses: actions/setup-go@v5
         with:
-          go-version-file: 'go.mod'
+          go-version: '1.24.2'
           cache-dependency-path: 'go.sum'
       - name: 'Build'
         uses: explore-flights/libduckdb/.github/actions/build_go_provided@main
@@ -25,6 +25,7 @@ jobs:
           go_version: '1.24.2'
           image_arch: 'aarch64'
           platform: 'linux/arm64'
+          release: 'v1.3.0-v1+parquet.json.icu.httpfs.aws'
           file: 'libduckdb_bundle-arm64-linux.a'
           use_go_cache: 'true'
       - name: 'Run App'
