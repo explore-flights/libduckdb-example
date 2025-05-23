@@ -12,6 +12,11 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
+      - name: 'Setup go'
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: 'go.mod'
+          cache-dependency-path: 'go.sum'
       - name: 'Build'
         uses: explore-flights/libduckdb/.github/actions/build_go_custom@main
         with:
@@ -23,6 +28,7 @@ jobs:
           image_arch: 'aarch64'
           platform: 'linux/arm64'
           vcpkg_target_triplet: 'arm64-linux'
+          use_go_cache: 'true'
       - name: 'Run App'
         run: ./example >> extensions.txt
       - name: 'Upload Artifact'
