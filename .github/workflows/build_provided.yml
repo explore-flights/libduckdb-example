@@ -17,10 +17,10 @@ jobs:
         with:
           go_arch: 'arm64'
           go_build_output_file: 'example'
-          go_version: '1.24.4'
+          go_version: '1.25.0'
           image_arch: 'aarch64'
           platform: 'linux/arm64'
-          release: 'v1.3.1-v1+parquet.json.icu.httpfs.aws'
+          release: 'v1.4.0-v1+parquet.json.icu.httpfs.aws'
           file: 'libduckdb_bundle-arm64-linux.a'
       - name: 'Run App'
         run: ./example >> extensions.txt

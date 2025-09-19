@@ -3,11 +3,13 @@ duckdb_extension_load(parquet)
 duckdb_extension_load(json)
 duckdb_extension_load(icu)
 duckdb_extension_load(httpfs
+    LOAD_TESTS
     GIT_URL https://github.com/duckdb/duckdb-httpfs
-    GIT_TAG 39779f89b16d0a35f04d3cfaf868e6366a2102f0
+    GIT_TAG 354d3f436a33f80f03a74419e76eb59459e19168
     INCLUDE_DIR extension/httpfs/include
 )
 duckdb_extension_load(aws
+    LOAD_TESTS
     GIT_URL https://github.com/duckdb/duckdb-aws
-    GIT_TAG ce6a0965f4f67e82a7dc82ea0378b8b839a2a9aa
+    GIT_TAG 812ce80fde0bfa6e4641b6fd798087349a610795
 )

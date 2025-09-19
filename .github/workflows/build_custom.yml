@@ -15,11 +15,11 @@ jobs:
       - name: 'Build'
         uses: explore-flights/libduckdb/.github/actions/build_go_custom@main
         with:
-          duckdb_git_ref: 'v1.3.1'
+          duckdb_git_ref: 'v1.4.0'
           extension_config_path: 'extension_config.cmake'
           go_arch: 'arm64'
           go_build_output_file: 'example'
-          go_version: '1.24.2'
+          go_version: '1.25.0'
           image_arch: 'aarch64'
           platform: 'linux/arm64'
           vcpkg_target_triplet: 'arm64-linux'
