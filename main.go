@@ -4,10 +4,11 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	"github.com/marcboeker/go-duckdb/v2"
 	"log"
 	"os/signal"
 	"syscall"
+
+	"github.com/duckdb/duckdb-go/v2"
 )
 
 func main() {
