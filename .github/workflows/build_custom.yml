@@ -15,17 +15,23 @@ jobs:
       - name: 'Build'
         uses: explore-flights/libduckdb/.github/actions/build_go_custom@main
         with:
-          duckdb_git_ref: 'v1.4.4'
+          duckdb_git_ref: 'v1.5.0'
           extension_config_path: 'extension_config.cmake'
           go_arch: 'arm64'
           go_build_output_file: 'example'
-          go_version: '1.25.3'
+          go_version: '1.26.1'
           image_arch: 'aarch64'
           platform: 'linux/arm64'
           vcpkg_target_triplet: 'arm64-linux'
           use_go_cache: 'true'
       - name: 'Run App'
         run: ./example >> extensions.txt
+      - name: 'Write Summary'
+        run: |
+          echo "### extensions.txt" >> $GITHUB_STEP_SUMMARY
+          echo "```txt" >> $GITHUB_STEP_SUMMARY
+          cat extensions.txt >> $GITHUB_STEP_SUMMARY
+          echo "```" >> $GITHUB_STEP_SUMMARY
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
         with:
