@@ -20,7 +20,7 @@ jobs:
           go_version: '1.26.1'
           image_arch: 'aarch64'
           platform: 'linux/arm64'
-          release: 'v1.5.0-v1+parquet.json.icu.httpfs.aws'
+          release: 'v1.5.1-v1+parquet.json.icu.httpfs.aws'
           file: 'libduckdb_bundle-arm64-linux.a'
       - name: 'Run App'
         run: ./example >> extensions.txt
